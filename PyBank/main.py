@@ -1,7 +1,7 @@
 import os 
 import csv 
 
-budget_csv = os.path.join('PyBank_Resources_budget_data.csv')
+budget_csv = os.path.join('Resources', 'PyBank_Resources_budget_data.csv')
 
 with open(budget_csv, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -20,6 +20,7 @@ with open(budget_csv, 'r') as csvfile:
         # Set values for parameters
         month_count += 1
         total += int(row[1])
+        date = []
         changes = []
        
     # Print Label
@@ -34,13 +35,14 @@ with open(budget_csv, 'r') as csvfile:
 
     profit_loss = row[1]
 
-    for i in range(1, total):
+    # Loop through the rows to find the following info
+    for i in range(1, profit_loss):
         changes = profit_loss[i+1] - profit_loss[i]
         ave_change = sum(changes)/month_count
         max_inc = max(changes)
-        max_inc_date = str((max_month)[changes.index(max(changes))])
+        max_inc_date = str(date[changes.index(max(changes))])
         max_dec = min(changes)
-        max_inc_date = str((min_month)[changes.index(min(changes))])
+        max_inc_date = str(date[changes.index(min(changes))])
 
     # Print out the average change
     print(f"Average Change: ${str(ave_change)}")
