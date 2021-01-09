@@ -62,24 +62,41 @@ with open(budget_csv, 'r') as csvfile:
         # Save the updated previous profit and loss value
         prev_profloss = float(row[1])
        
-        # Find the average change in profit and loss
-        ave_change = ((final_profloss - init_profloss) / (month_count - 1))
+    # Find the average change in profit and loss
+    ave_change = ((final_profloss - init_profloss) / (month_count - 1))
 
-    # Print Table Header
-    print("Financial Analysis")
-    print("---------------------------------------------------")
-
-    # Print out the total months
-    print(f"Total Months: {str(month_count)}")
-    
-    # Print out the total profits/loss
-    print(f"Total: ${str(total_profloss)}")
-        
-    # Print out the average change
+    # # # Print to the terminal
+    # # Print the Table Header
+    # print("Financial Analysis")
+    # print("---------------------------------------------------")
+    # # Print out the total months
+    # print(f"Total Months: {str(month_count)}")
+    # # Print out the total profits/loss
+    # print(f"Total: ${str(total_profloss)}")
+    # # Print out the average change
     # print(f"Average Change: ${str(ave_change)}")
-    
-    # Print out the greatest increase in profits month-year and $value
-    print(f"Greatest Increase in Profits: {str(max_inc_date)} (${str(max_inc)})")
-    
-    # Print out the greatest decrease in profits month-year and $value
-    print(f"Greatest Decrease in Profits: {str(max_dec_date)} (${str(max_dec)})")
+    # # Print out the greatest increase in profits month-year and $value
+    # print(f"Greatest Increase in Profits: {str(max_inc_date)} (${str(max_inc)})")
+    # # Print out the greatest decrease in profits month-year and $value
+    # print(f"Greatest Decrease in Profits: {str(max_dec_date)} (${str(max_dec)})")
+
+# Define financial analysis data
+file_data = f'''
+Financial Analysis
+---------------------------------------------------
+Total Months: {str(month_count)}
+Total: ${str(total_profloss)}
+Average Change: ${str(ave_change)}
+Greatest Increase in Profits: {str(max_inc_date)} (${str(max_inc)})
+Greatest Decrease in Profits: {str(max_dec_date)} (${str(max_dec)})
+'''
+
+# Print data to the terminal
+print(file_data)
+
+# Specify financial analysis data output file and location
+data_output = os.path.join("Analysis","PyBank_Financial_Analysis.txt")
+
+# Write data as a text file
+with open(data_output, "w") as txtfile:
+    txtfile.write(file_data)
