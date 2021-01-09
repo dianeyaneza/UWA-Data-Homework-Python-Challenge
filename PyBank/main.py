@@ -40,7 +40,10 @@ with open(budget_csv, 'r') as csvfile:
         if index == 0:
             init_profloss = float(row[1])
         elif index == row_count-1:
-            final_profloss = float(row[1])     
+            final_profloss = float(row[1])    
+
+        # Reset the last amount in profit and loss 
+        final_profloss = float(row[1])  
 
         # Determine the change values in profit and loss from one to the next and so on
         change = float(row[1]) - prev_profloss
@@ -64,6 +67,7 @@ with open(budget_csv, 'r') as csvfile:
        
     # Find the average change in profit and loss
     ave_change = ((final_profloss - init_profloss) / (month_count - 1))
+    ave_change_rounded = round(ave_change,2)
 
     # # # Print to the terminal
     # # Print the Table Header
@@ -74,7 +78,7 @@ with open(budget_csv, 'r') as csvfile:
     # # Print out the total profits/loss
     # print(f"Total: ${str(total_profloss)}")
     # # Print out the average change
-    # print(f"Average Change: ${str(ave_change)}")
+    # print(f"Average Change: ${str(ave_change_rounded)}")
     # # Print out the greatest increase in profits month-year and $value
     # print(f"Greatest Increase in Profits: {str(max_inc_date)} (${str(max_inc)})")
     # # Print out the greatest decrease in profits month-year and $value
@@ -86,7 +90,7 @@ Financial Analysis
 ---------------------------------------------------
 Total Months: {str(month_count)}
 Total: ${str(total_profloss)}
-Average Change: ${str(ave_change)}
+Average Change: ${str(ave_change_rounded)}
 Greatest Increase in Profits: {str(max_inc_date)} (${str(max_inc)})
 Greatest Decrease in Profits: {str(max_dec_date)} (${str(max_dec)})
 '''
