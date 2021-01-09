@@ -87,7 +87,7 @@ Winner: {str(winner)}
 # Print data to the terminal
 print(file_data)
 
-# Specify financial analysis data output file and location
+# Specify election results data output file and location
 data_output = os.path.join("Analysis","PyPoll_Election_Results.txt")
 
 # Write data as a text file
